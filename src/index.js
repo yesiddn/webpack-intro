@@ -5,7 +5,7 @@ const data =
 {
   name: "Duvan Yesid",
   nickname: "yesiddn",
-  description: "Vivo para descomponer problemas complejos y crear soluciones con un impacto funcional y positivo. Me apasiona comprender a las personas para crear soluciones valiosas, funcionales y positivas.",
+  description: "Desarrollador Front-end. Inicié en el mundo del desarrollo de software a los 16 años, cuando creé un MVP de biblioteca virtual para mi colegio. Desde entonces he tenido un camino lleno de aprendizaje, donde he tenido el privilegio de conocer a muchas personas extraordinarias.",
   avatar: "https://yesiddn.me/assets/img/profile.jpg",
   social:
     [
@@ -47,3 +47,25 @@ const data =
     ],
   footer: "Made with Love on Colombia",
 };
+
+const main = () => {
+  let name = document.createTextNode(data?.name);
+  let links = data?.links?.map((link) => {
+    return `
+      <div class="bg-${link.color}-200 px-4 py-5 w-full flex justify-between">
+        <a class="text-sm font-bold text-${link.color}-600 text-center hover:text-${link.color}-800 cursor-pointer"
+          href="${link.url}" target="_blank">
+          ${link.name}
+        </a>
+        <span>${link.emoji}</span>
+      </div>
+    `
+  }).join('');
+
+  let newItem = document.createElement('section');
+  newItem.innerHTML = links;
+  $links.appendChild(newItem);
+  $name.appendChild(name);
+}
+
+main();
